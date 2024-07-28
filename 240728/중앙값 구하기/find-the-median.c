@@ -12,13 +12,13 @@ int main() {
         else
             printf("%d",c);
     }
-    else if(a>c) //b>a
-        printf("%d",a);
-    else { //b>a,a<c
-        if(b>c)
+    else if(b>c) {//b>a
+        if(a>b)
             printf("%d",b);
         else
-            printf("%d",c);
+            printf("%d",a);
     }
+    else //a<b<c
+        printf("%d",b);
     return 0;
 }
