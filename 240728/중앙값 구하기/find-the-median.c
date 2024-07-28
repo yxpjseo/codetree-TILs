@@ -13,10 +13,10 @@ int main() {
             printf("%d",c);
     }
     else if(b>c) {//b>a
-        if(a>b)
-            printf("%d",b);
-        else
+        if(a>c)
             printf("%d",a);
+        else
+            printf("%d",c);
     }
     else //a<b<c
         printf("%d",b);
