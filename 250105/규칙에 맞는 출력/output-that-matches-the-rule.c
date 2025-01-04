@@ -2,18 +2,13 @@
 
 int main() {
     // Please write your code here.
-    int n,cnt;
+    int n;
     scanf("%d",&n);
-    cnt=n;
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            if(j<=i){
-                printf("%d ",cnt);
-                cnt++;
-            }
+            if(j<=i) printf("%d ",n-i+j);
         }
         printf("\n");
-        cnt=n-(i+1);
     }
     return 0;
 }
