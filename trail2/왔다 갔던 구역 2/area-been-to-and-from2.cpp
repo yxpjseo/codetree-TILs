@@ -1,45 +1,49 @@
 #include <iostream>
 
+#define MAX 2000
+#define OFFSET 1000
+
 using namespace std;
 
 int n;
-int x[100];
-char dir[100];
-int check[2001];
+int x1[100];
+int x2[100];
+int check[MAX+1];
 
 int main() {
+    int cur=0;
+
     cin >> n;
 
     for (int i = 0; i < n; i++) {
-        cin >> x[i] >> dir[i];
+        int distance;
+        char direction;
+        cin >> distance >> direction;
+
+        if(direction =='L'){
+            x1[i]=cur-distance;
+            x2[i]=cur;
+            cur-=distance;
+        }
+        else{
+            x1[i]=cur;
+            x2[i]=cur+distance;
+            cur+=distance;
+        }
+
+        x1[i]+=OFFSET;
+        x2[i]+=OFFSET;
     }
 
-    int index=1000;
-    int distance=0;
     // Please write your code here.
-    for (int i=0; i<n; i++) {
-        if(dir[i]=='R'){
-            distance=index+x[i];
+    for(int i=0; i<n; i++){
+        for(int j=x1[i]; j<x2[i]; j++){
+            check[j]++;
         }
-        else {
-            distance=index-x[i];
-        }
-
-        if(index<=distance){
-            for(int j=index; j<distance; j++){
-                check[j]++;
-            }
-        }
-        else {
-            for(int j=distance; j<index; j++){
-                check[j]++;
-            }
-        }
-        index=distance;
     }
 
     int cnt=0;
-    for (int i=0; i<2001; i++){
+    for(int i=0; i<=MAX; i++){
         if(check[i]>1){
             cnt++;
         }
