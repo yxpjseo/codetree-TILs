@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #define MAX 1000
 using namespace std;
 
@@ -15,13 +16,13 @@ int main() {
 
     for(int i=0; i<n; i++){
         if(a[i]!=0 && a[i]!=a[i-1]){
-            if(cnt>result) result=cnt;
+            result=max(result, cnt);
             cnt=0;
         }
         cnt++;
     }
-    
-    if(cnt>result) result=cnt;
+
+    result=max(result, cnt);
 
     cout << result;
     return 0;
