@@ -15,18 +15,15 @@ int main() {
     }
 
     for(int i=0; i<n; i++){
-        if(arr[i]==0){
-            cnt=1;
-        }
-        else if(arr[i]*arr[i-1]<0){
-            result=max(result, cnt);
-            cnt=1;
-        }
-        else{
+        if(i>=1 && arr[i]*arr[i-1]>0){
             cnt++;
         }
+        else{
+            cnt=1;
+        }
+
+        result=max(result, cnt);
     }
-    result=max(result, cnt);
 
     cout << result;
 
